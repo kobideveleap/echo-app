@@ -18,9 +18,9 @@ pipeline {
             '''
            }
        }
-       stage('Publish'){
+       stage('Deploy'){
            steps{
-               sh 'bash CI/publish.bash'
+               sh 'bash CI/deploy.bash'
            }
        }
    }

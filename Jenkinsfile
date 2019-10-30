@@ -26,7 +26,7 @@ pipeline {
             '''
            }
        }
-       //stage('Publish'){
+       /*stage('Publish'){
            when{
                branch 'master'
            }
@@ -48,5 +48,6 @@ pipeline {
               //sh 'docker tag echoapp:latest echoapp:dev-"${GIT_COMMIT}"'
               sh 'echo deploy'
            }
-       }
+       }*/
    }
+}

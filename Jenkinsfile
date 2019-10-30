@@ -13,6 +13,7 @@ pipeline {
        stage('Build and Tag'){
            steps{
             sh '''
+                echo ${GIT_BRANCH}
                 docker build -t echoapp .
                 if [[ ${GIT_BRANCH} == *"aster"* ]]; then                    
                     sudo docker tag echoapp:latest echoapp:1.0."${BUILD_NUMBER}"

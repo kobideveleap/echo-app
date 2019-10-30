@@ -13,15 +13,14 @@ pipeline {
        stage('Build and Tag'){
            steps{
             sh '''
-                branch=${GIT_BRANCH}
                 docker build -t echoapp .
-                if [[ ${branch} == *"aster"* ]]; then                    
+                if [[ $GIT_BRANCH == *"aster"* ]]; then                    
                     sudo docker tag echoapp:latest echoapp:1.0."${BUILD_NUMBER}"
                 fi
-                if [[ ${branch} == *"dev"* ]]; then
+                if [[ $GIT_BRANCH == *"dev"* ]]; then
                     sudo docker tag echoapp:latest echoapp:dev-"${GIT_COMMIT}"
                 fi
-                if [[ ${branch} == *"staging"* ]]; then
+                if [[ $GIT_BRANCH == *"staging"* ]]; then
                     sudo docker tag echoapp:latest echoapp:staging-"${GIT_COMMIT}"
                 fi
             '''
